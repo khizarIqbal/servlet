@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+status = The level of internal Log4j events that should be logged to the console.
+Log4j will log details about initialization, rollover and other internal actions to the status logger.
+Setting status="trace" is one of the first tools available to you if you need to troubleshoot log4j.
+ -->
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+        <!--
+        %d = output the date of the logging event
+        %5p - Level info of 5 characters length for better indentation.
+        %t = output the name of the thread that generated the logging event.
+        %logger = name of the logger that published the logging event
+        %c{1} - %c{1}	org.apache.commons.Foo results into	Foo
+                %c{2}	org.apache.commons.Foo	results into commons.Foo
+        %m - Outputs the application supplied message associated with the logging event.
+        %n - new line
+
+         -->
+            <PatternLayout pattern="[%d{DEFAULT}][%5p][%t][%c{1}] - %m%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console" />
+        </Root>
+    </Loggers>
+</Configuration>
